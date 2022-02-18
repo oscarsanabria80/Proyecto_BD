@@ -236,9 +236,9 @@ INSERT pais (id, name) VALUES
   (96, 'Zimbabwe');
 
 
--- ====================  INSERTING STATES  =====================
 
-INSERT states (id, id_country, name) VALUES 
+
+INSERT estados (id, id_pais, name) VALUES 
     (1, 3, 'Azerbaijan'),
     (2, 3, 'Nargorni Karabakh'),
     (3, 3, 'Nakhichevanskaya Region'),
