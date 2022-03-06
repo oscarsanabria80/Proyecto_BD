@@ -8,7 +8,7 @@
 * Borrar información: 6.Eliminar clientes por provincia.
 * Actualizar información: 7.Incrementar precio de productos según color.
 
-#CONTENIDO DEL PROYECTO
+# CONTENIDO DEL PROYECTO
 
 MANEJADOR DE BASES DE DATO
 
