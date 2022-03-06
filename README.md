@@ -37,3 +37,7 @@ FICHERO TIENDA.PY
 FICHERO TIENDA.SQL
 
 	Contiene todas las creaciones de tablas y sus inserción de datos.
+	
+MODELO RELACIONAL.
+
+	Contiene el tipo de relación que tendra nuestra base de datos.
