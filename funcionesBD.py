@@ -13,57 +13,6 @@ def conectar(host,usuario,password,nombrebd):
 def desconectar(db):
     db.close()
 
-def select(db, query):
-    try:
-        cursor = db.cursor()
-        cursor.execute(query)
-        resultado = cursor.fetchall()
-        print()
-        for x in resultado:
-            print(x)
-        print()
-    except MySQLdb.Error as err:
-        print("Algo ha ido mal con la consulta: %s\n" % err)
-
-def selectCount(db, table):
-    try:
-        cursor = db.cursor()
-        cursor.execute("SELECT COUNT(*) FROM %s" % table)
-        resultado = cursor.fetchone()
-        return resultado[0]
-    except MySQLdb.Error as err:
-        print("Algo ha ido mal con la consulta de agregado: %s\n" % err)
-
-def insert(db, insert):
-    try:
-        cursor = db.cursor()
-        cursor.execute(insert)
-        db.commit()
-        print("Nuevo registro insertado con éxito.\n")
-    except MySQLdb.Error as err:
-        print("Algo ha ido mal con la inserción: %s \n" % err)
-        db.rollback()
-
-def delete(db, delete):
-    try:
-        cursor = db.cursor()
-        cursor.execute(delete)
-        db.commit()
-        print("Se ha(n) eliminado con éxito %d registro(s).\n" % cursor.rowcount)
-    except MySQLdb.Error as err:
-        print("Algo ha ido mal con la eliminiación: %s \n" % err)
-        db.rollback()
-
-def update(db, update):
-    try:
-        cursor = db.cursor()
-        cursor.execute(update)
-        db.commit()
-        print("Se ha(n) actualizado con éxito %d registro(s).\n" % cursor.rowcount)
-    except MySQLdb.Error as err:
-        print("Algo ha ido mal con la actualización: %s \n" % err)
-        db.rollback()
-
 
 opcionesMenu = {
     1: "Listar clientes.",
