@@ -35,12 +35,12 @@ def mostrarMenu():
 def ListarInformacionClientes(db):
     print("\n[Listado de clientes]")
     select(db, "SELECT * FROM cliente")
-    print("[Número de clientes listados: %d]\n" % selectCount(db, "cliente"))
+    print("[Número de clientes listados: %d]\n" % (db, "cliente"))
 
 def ListarInformacionProductos(db):
     print("\n[Listado de productos]")
     select(db, "SELECT * FROM producto")
-    print("[Número de productos listados: %d]\n" % selectCount(db, "producto"))
+    print("[Número de productos listados: %d]\n" % (db, "producto"))
 
 def BuscarInformacionRangoPrecios(db):
     try:
