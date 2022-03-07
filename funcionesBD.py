@@ -31,8 +31,6 @@ def mostrarMenu():
         print("\t", key, ") ", opcionesMenu[key])
     print()
 
-def mostrarBienvenida():
-    print(u"Bienvenido al programa de gestión de [La Tienda De Ropa\u2122 Copyright: Oscar\xa9 2022]\n")
 
 def ListarInformacionClientes(db):
     print("\n[Listado de clientes]")
