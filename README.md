@@ -53,7 +53,6 @@ MODELO RELACIONAL.
 	systemctl status mariadb
 	systemctl enable mariadb
 
-# Como usuario regular
 # Crear BBDD mysql
 	cd
 	mkdir practicaOscar && cd $_
