@@ -42,19 +42,6 @@ MODELO RELACIONAL.
 
 	Contiene el tipo de relación que tendra nuestra base de datos.
 	
-
-
-# Insalar sshd
-	apt-get update
-	apt-get install openssh-server
-	systemctl status ssh
-	systemctl enable ssh
-
-# Buscar paquete similar a yum provides
-	apt-get install apt-file
-	apt-file update
-	apt-file search bin/netstat #Por ejemplo
-
 # Instalar pip
 	apt-get install python3-pip
 
