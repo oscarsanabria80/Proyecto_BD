@@ -1,3 +1,6 @@
+
+![](ModeloRelacional.png)
+
 # Proyecto_BD
 
 * Listar información: 1.Listar clientes.
