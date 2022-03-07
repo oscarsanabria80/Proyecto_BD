@@ -34,12 +34,14 @@ def mostrarMenu():
 
 def ListarInformacionClientes(db):
     print("\n[Listado de clientes]")
-    select(db, "SELECT * FROM cliente")
+    sql= "SELECT * FROM cliente"
+    cursor.execute(sql)
     print("[Número de clientes listados: %d]\n" % (db, "cliente"))
 
 def ListarInformacionProductos(db):
     print("\n[Listado de productos]")
-    select(db, "SELECT * FROM producto")
+    sql="SELECT * FROM producto"
+    cursor.execute(sql)
     print("[Número de productos listados: %d]\n" % (db, "producto"))
 
 def BuscarInformacionRangoPrecios(db):
@@ -53,32 +55,37 @@ def BuscarInformacionRangoPrecios(db):
             print("El precio mínimo no puede ser mayor al precio máximo\n")
             return
         print("\n[Listado de productos entre %d€ y %d€]" % (precioMinimo, precioMaximo))
-        select(db, "SELECT * FROM producto WHERE precio >= %d AND precio <= %d" % (precioMinimo, precioMaximo))
+         sql="SELECT * FROM producto WHERE precio >= %d AND precio <= %d" % (precioMinimo, precioMaximo)
+         cursor.execute(sql)
     except:
         print("Entrada errónea. Por favor introduce un número.\n")
 
 def BuscarVentasPorNombreVendedor(db):
     nombre = input("\nPor favor introduce el nombre del vendedor a buscar, no importan mayusculas ni minúsculas ni si está completo, contra más preciso sea el nombre más precisos serán los resultados: ")
     print("\n[Listado de todos los productos vendidos por el/los vendedor(es) llamado(s) %s" % nombre)
-    select(db,
-        ("SELECT producto.ropa, producto.color, producto.precio FROM producto "
+    cursor.execute(sql)
+    sql="SELECT producto.ropa, producto.color, producto.precio FROM producto "
          "INNER JOIN (SELECT idproducto FROM venta "
          "INNER JOIN (SELECT id FROM vendedor WHERE LOWER (nombre) LIKE '%" + nombre.lower() + "%') as T "
-         "ON T.id = venta.idvendedor) AS U on producto.id = U.idproducto"))
+         "ON T.id = venta.idvendedor) AS U on producto.id = U.idproducto"
+
 
 def AgregarCliente(db):
-    email = input("\nPor favor introduce el mail del cliente: ")
+   
     try:
+    	email = input("\nPor favor introduce el mail del cliente: ")
+    	provincia = input("Por favor introduce la provincia del cliente: ")
         telefono = int(input("Por favor introduce el teléfono del cliente: "))
+        sql="INSERT INTO cliente (email, tlf, provincia) VALUES ('%s',%d,'%s')" % (email, telefono, provincia)
+    	cursor.execute(sql)
     except:
         print("Entrada errónea. Por favor introduce un número.\n")
-        return
-    provincia = input("Por favor introduce la provincia del cliente: ")
-    insert(db, "INSERT INTO cliente (email, tlf, provincia) VALUES ('%s',%d,'%s')" % (email, telefono, provincia))
+        return 
 
 def EliminarClientesPorProvincia(db):
     provincia = input("\nPor favor introduce la provincia de la cual eliminarás TODOS los clientes y en cascada TODAS las compras de esos clientes: ")
-    delete(db, "DELETE FROM cliente WHERE provincia = '%s'" % provincia)
+    sql="DELETE FROM cliente WHERE provincia = '%s'" % provincia
+    cursor.execute(sql)
 
 def ActualizarPrecioProductoPorColor(db):
     try:
@@ -87,6 +94,7 @@ def ActualizarPrecioProductoPorColor(db):
         if porcentaje < 1 or porcentaje > 100:
             print("El procentaje a incrementar debe estar entre el 1% y el 100%\n")
             return
-        update(db, "UPDATE producto SET precio = precio + precio * %d / 100 WHERE color = '%s'" % (porcentaje, color))
+        sql= "UPDATE producto SET precio = precio + precio * %d / 100 WHERE color = '%s'" % (porcentaje, color)
+        cursor.execute(sql)
     except:
         print("Entrada errónea. Por favor introduce un número.\n")
